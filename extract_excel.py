@@ -1,5 +1,6 @@
 import openpyxl
 from openpyxl import load_workbook
+from datetime import datetime
 
 class ExtractExcel:
 
@@ -31,18 +32,22 @@ class ExtractExcel:
                 f.write('INSERT INTO table_name VALUES(');
                 data_str = ''
 
-                for j in range(1, self._columns+1):
-                   
-                    if(self._ws.cell(row=i,column=j).value is None):
+                #modify below number depending on where you want to start from
+                #
+                #
+                #***********Currently starting at value 2********
+                #
+                #
+                for j in range(2, self._columns+1):
+                    
+                    if(self._ws.cell(row=i,column=j).value is None or self._ws.cell(row=i,column=j).value == 'NULL'):
                         data_str += 'NULL,'
 
-                    elif (isinstance(self._ws.cell(row=i,column=j).value, str)):
-                        #Removes whitespace, linefeeds, and carriage returns
-                        #TODO trimming does not seem to be working
-                        data_str += "REPLACE(REPLACE(LTRIM(RTRIM('"+ self._ws.cell(row=i, column=j).value + "')),CHAR(13),''), CHAR(10), ''),"
+                    elif (isinstance(self._ws.cell(row=i,column=j).value, int)):
+                        data_str += str(self._ws.cell(row=i, column=j).value) + ","
 
                     else:
-                        data_str += self._ws.cell(row=i, column=j).value + ","
+                        data_str += "'"+ str(self._ws.cell(row=i, column=j).value) + "',"
 
                 else:
                     f.write(data_str[:-1] + ')\n')
