@@ -22,6 +22,10 @@ class ExtractExcel:
         print('Columns:')
         self._columns = int(input())
 
+        #column to start at
+        print('Enter column start')
+        self._col_start = int(input())
+
     	#Primary method for exporting data
         self.exportData()
 
@@ -36,9 +40,9 @@ class ExtractExcel:
                 #
                 #
                 #***********Currently starting at value 2********
+                #***********BOTH numbers need to start at same value********
                 #
-                #
-                for j in range(2, self._columns+1):
+                for j in range(self._col_start, self._columns + self._col_start):
                     
                     if(self._ws.cell(row=i,column=j).value is None or self._ws.cell(row=i,column=j).value == 'NULL'):
                         data_str += 'NULL,'
@@ -54,6 +58,10 @@ class ExtractExcel:
                 
         print('Complete')
 
+
 #Main Method
-if __name__=='__main__':    
+def main():
     ExtractExcel()
+
+if __name__=='__main__':    
+    main()
