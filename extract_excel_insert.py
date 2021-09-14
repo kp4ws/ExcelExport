@@ -2,7 +2,7 @@ import openpyxl
 from openpyxl import load_workbook
 from datetime import datetime
 
-class ExtractExcel:
+class ExtractExcelInsert:
 
     #Constructor
     def __init__(self):
@@ -36,22 +36,16 @@ class ExtractExcel:
                 f.write('INSERT INTO table_name VALUES(');
                 data_str = ''
 
-                #modify below number depending on where you want to start from
-                #
-                #
-                #***********Currently starting at value 2********
-                #***********BOTH numbers need to start at same value********
-                #
                 for j in range(self._col_start, self._columns + self._col_start):
                     
                     if(self._ws.cell(row=i,column=j).value is None or self._ws.cell(row=i,column=j).value == 'NULL'):
                         data_str += 'NULL,'
 
                     elif (isinstance(self._ws.cell(row=i,column=j).value, int)):
-                        data_str += str(self._ws.cell(row=i, column=j).value) + ","
+                        data_str += str(self._ws.cell(row=i, column=j).value).strip() + ","
 
                     else:
-                        data_str += "'"+ str(self._ws.cell(row=i, column=j).value) + "',"
+                        data_str += "'"+ str(self._ws.cell(row=i, column=j).value).strip() + "',"
 
                 else:
                     f.write(data_str[:-1] + ')\n')
@@ -61,7 +55,7 @@ class ExtractExcel:
 
 #Main Method
 def main():
-    ExtractExcel()
+    ExtractExcelInsert()
 
 if __name__=='__main__':    
     main()
