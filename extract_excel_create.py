@@ -57,10 +57,13 @@ class ExtractExcelUpdate:
                     #Check for when next CREATE TABLE should happen.
                     #NOTE, We need to check this in advance, otherwise a comma will be added to the last table column which is incorrect
                     if(delim_check == self._delimiter):
+                        
+                        #If table name column empty then append table_name
                         if(self._ws.cell(row=i+1, column=1).value is not None):
                             f.write(data_str + '\n);\n\nCREATE TABLE ' + str(self._ws.cell(row=i+1, column=1).value).strip() + ' (\n')
                         else:
                             f.write(data_str + '\n);\n\nCREATE TABLE table_name (\n')
+
                     else:
                         f.write(data_str[:-1] + ',\n')
             else:
