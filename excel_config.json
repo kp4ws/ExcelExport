@@ -1,7 +1,8 @@
 {
-    "workbook": "C:\\excel_exports\\Company - Address - HO Contact.xlsx",
-    "destination": "C:\\excel_exports\\Company - Address - HO Contact.sql",
-    "rows": 182,
-    "columns": 2,
-    "start": 9
+    "workbook": "C:\\excel_exports\\Active_Employees_for_Sarah.xlsx",
+    "destination": "C:\\excel_exports\\Active_Employees_for_Sarah.sql",
+    "rows": 205,
+    "columns": 3,
+    "row-start" : 2,
+    "col-start": 1
 }

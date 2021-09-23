@@ -16,6 +16,7 @@ class ExtractExcelInsert:
         self._directory = ''
         self._rows = ''
         self._columns = ''
+        self._row_start = ''
         self._col_start = ''
 
         if(str(self._config) != '{}' and input('Use recent config? (Enter = yes, Value = no) ') == ''):
@@ -23,7 +24,8 @@ class ExtractExcelInsert:
             self._directory = self._config['destination']
             self._rows = self._config['rows']
             self._columns = self._config['columns']
-            self._col_start = self._config['start']
+            self._row_start = self._config['row-start']
+            self._col_start = self._config['col-start']
         else:
             self.userInput()
             self.saveConfig()
@@ -42,6 +44,7 @@ class ExtractExcelInsert:
         self._directory = input('Enter absolute path for Export Location "C:\\directory name\\<file name>.sql" ')
         self._rows = int(input('Rows: '))
         self._columns = int(input('Columns: '))
+        self._row_start = int(input('Enter row start '))
         self._col_start = int(input('Enter column start '))
 
     def saveConfig(self):
@@ -50,7 +53,8 @@ class ExtractExcelInsert:
             "destination" : self._directory,
             "rows" : self._rows,
             "columns" : self._columns,
-            "start" : self._col_start
+            "row-start" : self._row_start,
+            "col-start" : self._col_start
         }
 
         json_obj = json.dumps(new_config, indent = 6)
@@ -60,7 +64,7 @@ class ExtractExcelInsert:
     #Export data from excel to sql file
     def exportData(self):
         with open (self._directory, 'w') as f:
-            for i in range(2, self._rows+1):
+            for i in range(self._row_start, self._rows + self._row_start):
                 f.write('INSERT INTO table_name VALUES(')
                 data_str = ''
 
