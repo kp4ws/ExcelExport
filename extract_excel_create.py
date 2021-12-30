@@ -2,37 +2,20 @@ import openpyxl
 from openpyxl import load_workbook
 from datetime import datetime
 
-class ExtractExcelUpdate:
+class ExtractExcelCreate:
+    def __init__(self, wb_name, file, rows, columns, delimiter):
+        self._wb_name = wb_name
+        self._file = file
+        self._rows = rows
+        self._columns = columns
+        self._delimiter = delimiter
 
-    #Constructor
-    def __init__(self):
-
-        #Get user input
-        print('Enter absolute path for Workbook "C:\\directory name\\<file name>.xlsx"')
-        self._wb_name = input()
-        #self._wb = load_workbook('.\\'+self._wb_name+'.xlsx', data_only=True)
         self._wb = load_workbook(self._wb_name, data_only=True)
         self._ws = self._wb.active
-
-        print('Enter absolute path for Export Location "C:\\directory name\\<file name>.sql"')
-        self._directory = input()
-        
-        print('Rows:')
-        self._rows = int(input())
-        #print('Columns:')
-        #self._columns = int(input())
-        self._columns = 4
-
-        #table delimiter
-        print('Enter delimiter')
-        self._delimiter = input()
-
-    	#Primary method for exporting data
         self.exportData()
 
-    #Export data from excel to sql file
     def exportData(self):
-        with open (self._directory, 'w') as f:
+        with open (self._file, 'w') as f:
 
             #initial CREATE TABLE statement (currently being hardcoded)
             f.write('CREATE TABLE ' + str(self._ws.cell(row=2, column=1).value).strip() + '(\n')
@@ -68,14 +51,3 @@ class ExtractExcelUpdate:
                         f.write(data_str[:-1] + ',\n')
             else:
                 f.write(');')
-
-                
-        print('Complete')
-
-
-#Main Method
-def main():
-    ExtractExcelUpdate()
-
-if __name__=='__main__':    
-    main()

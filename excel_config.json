@@ -1,8 +1,10 @@
 {
     "workbook": "C:\\excel_exports\\Active_Employees_for_Sarah.xlsx",
-    "destination": "C:\\excel_exports\\Active_Employees_for_Sarah.sql",
+    "file": "C:\\excel_exports\\Active_Employees_for_Sarah.sql",
     "rows": 205,
     "columns": 3,
     "row-start" : 2,
-    "col-start": 1
+    "col-start": 1,
+    "delimiter": "%",
+    "program_type": "insert"
 }

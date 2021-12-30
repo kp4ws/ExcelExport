@@ -6,6 +6,9 @@ With enough data in the excel file, the automation process greatly reduces manua
 Currently a CMD application
 ![image](https://user-images.githubusercontent.com/58745400/133308370-cce48889-03fb-47c1-a41f-2ce35aff614a.png)
 
+## V1.1
+- Added app.py that starts the program
+- Removed user input. All config variables are now set in the json file
+
 ## Upate Ideas
-- Add config file for storing recent program runs
 - Add GUI menu
