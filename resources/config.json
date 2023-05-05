@@ -1,10 +1,9 @@
 {
-    "workbook": "C:\\excel_exports\\test.xlsx",
-    "file": "C:\\excel_exports\\test.sql",
+    "program_type": "insert",
+    "source_file": "C:\\excel_exports\\test.xlsx",
+    "destination_file": "C:\\excel_exports\\test.sql",
     "rows": 205,
     "columns": 3,
     "row-start" : 2,
-    "col-start": 1,
-    "delimiter": "%",
-    "program_type": "insert"
+    "column-start": 1
 }
