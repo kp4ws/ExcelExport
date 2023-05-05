@@ -1,0 +1,10 @@
+{
+    "workbook": "C:\\excel_exports\\test.xlsx",
+    "file": "C:\\excel_exports\\test.sql",
+    "rows": 205,
+    "columns": 3,
+    "row-start" : 2,
+    "col-start": 1,
+    "delimiter": "%",
+    "program_type": "insert"
+}
