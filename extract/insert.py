@@ -12,7 +12,7 @@ def generate_insert_sql_commands(data):
 
     workbook = load_workbook(source_file, data_only=True)
     worksheet = workbook.active
-
+    
     for i in range(row_start, row_start + rows):
         values = []
 
@@ -24,7 +24,7 @@ def generate_insert_sql_commands(data):
             elif isinstance(cell_value, int):
                 values.append(str(cell_value).strip())
             else:
-                values.append("'" + str(cell_value).strip() + "'")
+                values.append("'" + str(cell_value).strip().replace("'", "''") + "'")
 
         # Note, table_name is hardcoded and needs to be manually updated in the generated command
         command = 'INSERT INTO table_name VALUES(' + ','.join(values) + ")"

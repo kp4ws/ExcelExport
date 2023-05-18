@@ -23,6 +23,7 @@ class ExcelExportModel:
         else:
             raise ValueError("Invalid program type" + program_type)
         
+        #TODO: raise exception if destination file is blank
         destination_file = data["destination_file"]
         self.save_sql_commands(sql_commands, destination_file)
         

@@ -101,6 +101,8 @@ class ExcelExportView(tk.Frame):
         self.button_generate.grid(row=7, column=1, padx=3)
         self.button_generate = ttk.Button(self, text="Prefill data", command=self.handle_prefill)
         self.button_generate.grid(row=7, column=0, padx=3, pady=15)
+
+        #TODO Open file button
     
     def display_success_message(self):
         messagebox.showinfo("Success", "Operation completed successfully!", parent=self.window)
