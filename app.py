@@ -4,14 +4,14 @@ from extract_excel_create import ExtractExcelCreate
 from extract_excel_insert import ExtractExcelInsert
 from extract_excel_update import ExtractExcelUpdate
 
-class App:
-    FILE_NAME = '.\excel_config.json'
+def main():
+    FILE_NAME = '.\config.json'
 
     def __init__(self):
         self._config = self.retrieveData()
         self._program_type = self._config['program_type']
         self._wb_name = self._config['workbook']
-        self._file = self._config['destination']
+        self._file = self._config['file']
         self._rows = self._config['rows']
         self._columns = self._config['columns']
         self._row_start = self._config['row-start']
@@ -37,4 +37,4 @@ class App:
               sys.exit()
 
 if __name__=='__main__':    
-    App()
+    main()
