@@ -20,6 +20,7 @@ class ExcelExportView(tk.Frame):
             else:
                 self.destination_file.set(filename)
 
+    #TODO: Break down into smaller GUI components
     def create_widgets(self):
         self.label_program_type = ttk.Label(self, text="Program Type", anchor="w")
         self.label_program_type.pack(anchor="w", padx=3, pady=3)
@@ -83,6 +84,8 @@ class ExcelExportView(tk.Frame):
         self.button_generate = ttk.Button(self, text="Generate SQL Commands", command=self.handle_generate)
         self.button_generate.pack(side="left", padx=3)
 
+        #TODO Open file button
+    
     def display_success_message(self):
         messagebox.showinfo("Success", "Operation completed successfully!", parent=self.window)
 
@@ -100,7 +103,7 @@ class ExcelExportView(tk.Frame):
 
     def handle_prefill(self):
         self.event_system.emit(EventChannel.PREFILL, None)
-
+    
     def update_widgets(self, data):
         self.program_type.set(data['program_type'].capitalize())
         self.source_file.set(data['source_file'])
