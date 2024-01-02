@@ -9,5 +9,5 @@ With enough data in the excel file, the automation process greatly reduces manua
 - V1.1 - Added JSON config file for recent program runs
 - V1.0 - Initial Program
 
-## Update Ideas
-- Add GUI menu
+## Current Development:
+- Working on a GUI menu for the application
