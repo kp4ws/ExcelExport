@@ -5,6 +5,8 @@ Program written in Python, used to export excel files as SQL commands to update 
 
 With enough data in the excel file, the automation process greatly reduces manual labour.
 
+![image](https://user-images.githubusercontent.com/58745400/133308370-cce48889-03fb-47c1-a41f-2ce35aff614a.png)
+
 ## Update Notes:
 - V2.0 - GUI Menu - Includes prefill option to easily reuse the same data from the last program run
 - V1.2 - Added app.py that starts the program. Removed user input. All config variables are now set in the json file
