@@ -1,6 +1,6 @@
 # ExcelExport
 Program written in Python, used to export data from excel files and generate SQL commands for use in a database system.  
-Supports `INSERT` SQL commands with planned future functionality to support other SQL commands such as `UPDATE` and `CREATE TABLE`.
+Supports `INSERT` SQL commands with future plans to support other SQL commands such as `UPDATE` and `CREATE TABLE`.
 
 With enough data in the excel file, the automation process greatly reduces manual labour.
 
