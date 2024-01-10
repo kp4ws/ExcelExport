@@ -1,1 +1,1 @@
-{"program_type": "Insert", "source_file": "D:/dev/Source.xlsx", "destination_file": "D:/dev/Destination.xlsx", "rows": 1000, "columns": 6, "row_start": 2, "column_start": 1}
+{"program_type": "Insert", "source_file": "D:/dev/Source.xlsx", "destination_file": "D:/dev/Destination.xlsx", "rows": 0, "columns": 0, "row_start": 1, "column_start": 1, "table_name": "Test"}

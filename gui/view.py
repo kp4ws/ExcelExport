@@ -20,6 +20,7 @@ class ExcelExportView(tk.Frame):
             else:
                 self.destination_file.set(filename)
 
+    # TODO: Make widgets dynamic based on program type (multiple create widget functions?)
     def create_widgets(self):
         self.label_program_type = ttk.Label(self, text="Program Type", anchor="w")
         self.label_program_type.pack(anchor="w", padx=3, pady=3)
@@ -47,6 +48,13 @@ class ExcelExportView(tk.Frame):
 
         self.button_destination_file = ttk.Button(self, text="Browse", command=lambda: self.browse_file(False, [("All Files", "*.*")]))
         self.button_destination_file.pack(anchor="w", padx=3)
+
+        self.label_table_name = ttk.Label(self, text="Table Name", anchor="w")
+        self.label_table_name.pack(anchor="w", padx=3, pady=3)
+
+        self.table_name = tk.StringVar()
+        self.table_name_entry = ttk.Entry(self, textvariable=self.table_name, width=35)
+        self.table_name_entry.pack(anchor="w", padx=3)
 
         self.label_row_num = ttk.Label(self, text="Number of Rows", anchor="w")
         self.label_row_num.pack(anchor="w", padx=3, pady=3)
@@ -85,8 +93,15 @@ class ExcelExportView(tk.Frame):
 
     def display_success_message(self):
         messagebox.showinfo("Success", "Operation completed successfully!", parent=self.window)
+    
+    def display_error_message(self):
+        messagebox.showerror("Error", "Error occurred, please check your input and try again", parent=self.window)
 
     def handle_generate(self):
+        if self.source_file.get() == '' or self.destination_file.get() == '':
+            self.display_error_message()
+            return
+
         data = {
             "program_type": self.program_type.get(),
             "source_file": self.source_file.get(),
@@ -94,7 +109,8 @@ class ExcelExportView(tk.Frame):
             "rows": self.rows.get(),
             "columns": self.columns.get(),
             "row_start": self.row_start.get(),
-            "column_start": self.column_start.get()
+            "column_start": self.column_start.get(),
+            "table_name": self.table_name.get()
         }
         self.event_system.emit(EventChannel.GENERATE, data)
 
@@ -109,3 +125,4 @@ class ExcelExportView(tk.Frame):
         self.columns.set(data['columns'])
         self.row_start.set(data['row_start'])
         self.column_start.set(data['column_start'])
+        self.table_name.set(data['table_name'])

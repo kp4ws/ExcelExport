@@ -7,6 +7,7 @@ def generate_insert_sql_commands(data):
     rows = data["rows"]
     column_start = data["column_start"]
     columns = data["columns"]
+    table_name = data["table_name"]
 
     sql_commands = []
 
@@ -26,8 +27,12 @@ def generate_insert_sql_commands(data):
             else:
                 values.append("'" + str(cell_value).strip().replace("'", "''") + "'")
 
-        # Note, table_name is hardcoded and needs to be manually updated in the generated command
-        command = 'INSERT INTO table_name VALUES(' + ','.join(values) + ")"
+        command = ''
+        if table_name == '':
+            command = f'INSERT INTO {table_name} VALUES(' + ','.join(values) + ")"
+        else:
+            command = 'INSERT INTO VALUES(' + ','.join(values) + ")"
+        
         sql_commands.append(command)
 
     return sql_commands

@@ -13,7 +13,7 @@ def center_window(window):
 def main():
     root = tk.Tk()
     
-    root.geometry("500x420")
+    root.geometry("500x460")
     # root.minsize(400, 300)
     # root.maxsize(1280,720)
     root.title("Excel Export")
